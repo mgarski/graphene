@@ -206,7 +206,7 @@ description.
     padding = the kind of padding you need
     title = box title
     label_formatter = and a formatter, as before.
-    min_y_zero = set to false to have the y access scale b/w min and max values
+    min_y_zero = set to true to have the y access min be zero
 
 
 # Visuals
