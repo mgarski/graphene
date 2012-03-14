@@ -207,6 +207,7 @@ description.
     title = box title
     label_formatter = and a formatter, as before.
     min_y_zero = set to true to have the y access min be zero
+    y_axis_format = d3 format string for the values on the y axis
 
 
 # Visuals

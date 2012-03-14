@@ -292,6 +292,7 @@ class Graphene.TimeSeriesView extends Backbone.View
     @firstrun = true
     @parent = @options.parent || '#parent'
     @null_value = 0
+    @y_axis_format = @options.y_axis_format || "s"
 
     @vis = d3.select(@parent).append("svg")
             .attr("class", "tsview")
@@ -329,7 +330,7 @@ class Graphene.TimeSeriesView extends Backbone.View
     #
     xtick_sz = if @display_verticals then -@height else 0
     xAxis = d3.svg.axis().scale(x).ticks(4).tickSize(xtick_sz).tickSubdivide(true)
-    yAxis = d3.svg.axis().scale(y).ticks(4).tickSize(-@width).orient("left").tickFormat(d3.format("s"))
+    yAxis = d3.svg.axis().scale(y).ticks(4).tickSize(-@width).orient("left").tickFormat(d3.format(@y_axis_format))
 
     vis = @vis
 
