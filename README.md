@@ -198,7 +198,7 @@ description.
 
     line_height = visuals, default 16
     animate_ms = new data animation in
-    num_labels = max labels to display at the bottom
+    labels = max labels to display at the bottom
     sort_labels = order labels will be sorted
     display_verticals = display vertical ticks (eww!)
     width = box width
@@ -206,6 +206,7 @@ description.
     padding = the kind of padding you need
     title = box title
     label_formatter = and a formatter, as before.
+    min_y_zero = set to false to have the y access scale b/w min and max values
 
 
 # Visuals

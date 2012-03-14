@@ -281,6 +281,7 @@ class Graphene.TimeSeriesView extends Backbone.View
     @line_height = @options.line_height || 16
     @animate_ms = @options.animate_ms || 500
     @num_labels = @options.labels || 3
+    @min_y_zero = @options.min_y_zero || true
     @sort_labels = @options.labels_sort || 'desc'
     @display_verticals = @options.display_verticals || false
     @width = @options.width || 400
@@ -320,7 +321,8 @@ class Graphene.TimeSeriesView extends Backbone.View
     # build dynamic x & y metrics.
     #
     x = d3.time.scale().domain([data[0].points[0][1], data[0].points[data[0].points.length-1][1]]).range([0, @width])
-    y = d3.scale.linear().domain([dmin.ymin, dmax.ymax]).range([@height, 0]).nice()
+    min = if @min_y_zero then 0 else dmin.ymin
+    y = d3.scale.linear().domain([min, dmax.ymax]).range([@height, 0]).nice()
 
     #
     # build axis
