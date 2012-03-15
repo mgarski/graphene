@@ -11,8 +11,9 @@ class Graphene
       else
         klass = Graphene.TimeSeries
 
-      ts = new klass(source: json[k].source)
+      ts = new klass(source: json[k].source, refresh_interval: json[k].refresh_interval)
       delete json[k].source
+      delete json[k].refresh_interval
 
       _.each json[k], (opts, view)->
         klass = eval("Graphene.#{view}View")

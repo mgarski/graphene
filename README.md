@@ -166,7 +166,21 @@ Controller here), you should be aware that your data is fetched to a
 Model, munged on, and 'broadcasted' to interested parties (such as widgets).  
 
 This means you can take a look at the Model, and be able to configure it
-to your own needs. One example is specifying a `refresh_interval`.   
+to your own needs. One example is specifying a `refresh_interval` in the 
+description, which defaults to 10000 ms if not specified:   
+
+
+    description = {
+      "Total Notifications": {
+        source: "http://localhost:4567/",
+        refresh_interval: 30000
+        GaugeLabel: {
+          parent: "#hero-one",
+          title: "Notifications Served",
+          type: "max"
+        }
+      }
+    }
 
 It wouldn't make sense to poll on your Graphite backend frequently, if the
 data is updated slowly; turn `refresh_interval` up a notch.
