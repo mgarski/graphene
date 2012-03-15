@@ -3,6 +3,7 @@ class Graphene
   demo:->
     @is_demo = true
   build: (json)=>
+    @series = []
     _.each _.keys(json), (k)=>
       console.log "building [#{k}]"
       if @is_demo
@@ -18,7 +19,11 @@ class Graphene
         console.log _.extend({ model: ts }, opts)
         new klass(_.extend({ model: ts }, opts))
       ts.start()
+      @series.push(ts)
       console.log ts
+      
+  destroy: ()=>
+    ts.stop() for ts in @series 
 
   discover: (url, dash, parent_specifier, cb)->
     $.get "#{url}/dashboard/load/#{dash}", (data)->
